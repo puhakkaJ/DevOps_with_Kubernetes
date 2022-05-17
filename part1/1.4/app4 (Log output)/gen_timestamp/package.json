@@ -1,0 +1,17 @@
+{
+  "name": "gen_timestamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "jenni puhakka",
+  "license": "ISC",
+  "dependencies": {
+    "cucumber": "^6.0.7",
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1"
+  }
+}
