@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output-split-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output-split
+  template:
+    metadata:
+      labels:
+        app: log-output-split
+    spec:
+      volumes: # Define volume
+        - name: shared-log-output-split
+          emptyDir: {}
+      containers:
+        - name: gen-timestamp
+          image: muhakka/gen-timestamp:latest
+          volumeMounts: # Mount volume
+          - name: shared-log-output-split
+            mountPath: /usr/src/app/files
+        - name: read-file
+          image: muhakka/read-file:latest
+          volumeMounts: # Mount volume
+          - name: shared-log-output-split
+            mountPath: /usr/src/app/files
