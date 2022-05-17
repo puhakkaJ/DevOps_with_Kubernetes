@@ -21,7 +21,7 @@ app.use( async (ctx, next) => {
 
 router.get('pingpong', '/pingpong', (context) => {
   context.status = 200
-  context.body = number
+  context.body = `pong ${number}`
   number = number + 1
 })
 
