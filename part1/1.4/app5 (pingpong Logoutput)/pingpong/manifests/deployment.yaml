@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pingpong-vol-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pingpong-vol
+  template:
+    metadata:
+      labels:
+        app: pingpong-vol
+    spec:
+      volumes:
+        - name: shared-pingpong-logoutput
+          persistentVolumeClaim:
+            claimName: pingpong-logoutput-claim
+      containers:
+        - name: pingpong-vol
+          image: muhakka/pingpong-vol:latest
+          volumeMounts:
+          - name: shared-pingpong-logoutput
+            mountPath: /usr/src/app/files
