@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-application-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-application
+  template:
+    metadata:
+      labels:
+        app: todo-application
+    spec:
+      volumes:
+        - name: shared-todo-application
+          persistentVolumeClaim:
+            claimName: image-claim
+      containers:
+        - name: todo-application
+          image: muhakka/todo-application:latest
+          volumeMounts:
+          - name: shared-todo-application
+            mountPath: /usr/app/files
