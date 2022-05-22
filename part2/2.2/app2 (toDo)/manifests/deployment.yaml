@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: devops-with-kubernetes-project
+  name: todo-application-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-application
+  template:
+    metadata:
+      labels:
+        app: todo-application
+    spec:
+      containers:
+        - name: todo-application-back
+          image: muhakka/todo-application-back:latest
+        - name: todo-application-front
+          image: muhakka/todo-application-front:latest
