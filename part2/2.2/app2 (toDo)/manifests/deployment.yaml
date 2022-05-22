@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: devops-with-kubernetes-project
   name: todo-application-dep
 spec:
   replicas: 1
