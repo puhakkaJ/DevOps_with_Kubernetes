@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  namespace: devops-with-kubernetes-project
+  name: insert-task
+spec:
+  schedule: "0 10 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: daily-todo
+            image: muhakka/daily-todo:latest
+          restartPolicy: OnFailure
