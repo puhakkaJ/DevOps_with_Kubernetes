@@ -32,7 +32,6 @@ const getPongs = async () => {
   return res.data
 }
 
-  
 app.get('/', async (req, res) => {
   console.log("moikkkkaaaa")
   const pongs = await getPongs() 

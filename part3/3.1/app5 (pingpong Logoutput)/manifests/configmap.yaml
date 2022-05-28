@@ -5,3 +5,4 @@ metadata:
   name: example-configmap
 data:
     example.message: Hello
+

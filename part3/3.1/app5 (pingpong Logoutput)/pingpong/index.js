@@ -16,7 +16,6 @@ const pool = new Pool({
   port: "5432"
 });
 
-
 app.get('/pingpong',async (req, result) => {
   console.log("here")
   pool.query(
