@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: devops-with-kubernetes
   name: pingpong-svc
 spec:
   type: NodePort
