@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: devops-with-kubernetes-project
+  name: todo-application-back-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-application-back
+  template:
+    metadata:
+      labels:
+        app: todo-application-back
+    spec:
+      containers:
+        - name: todo-application-back
+          image: PROJECT-BACK/IMAGE
+          env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql-db-secret
+                key: DATABASE_PASSWORD
