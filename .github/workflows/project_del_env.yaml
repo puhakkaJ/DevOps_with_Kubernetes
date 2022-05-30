@@ -28,4 +28,5 @@ jobs:
 
       - name: Delete environment
         run: |-
+          echo ${GITHUB_REF#refs/heads/}
           kubectl delete namespace ${GITHUB_REF#refs/heads/}
