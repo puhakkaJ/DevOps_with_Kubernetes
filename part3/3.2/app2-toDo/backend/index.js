@@ -16,7 +16,6 @@ const filePath = path.join(directory, 'image.jpg')
 
 const { Pool, Client } = require("pg");
 
-
 const pool = new Pool({
   user: "kubeuser",
   host: "postgres-svc",
