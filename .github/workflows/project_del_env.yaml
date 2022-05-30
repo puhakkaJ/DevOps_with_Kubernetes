@@ -6,6 +6,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: dwk-cluster
   GKE_ZONE: europe-north1-b
+  BRANCH: ${GITHUB_REF#refs/heads/}
 jobs:
   build-publish-deploy:
     name: Deleting the branch environment
@@ -28,5 +29,5 @@ jobs:
 
       - name: Delete environment
         run: |-
-          echo ${GITHUB_REF#refs/heads/}
-          kubectl delete namespace ${GITHUB_REF#refs/heads/}
+          echo "$BRANCH"
+          kubectl delete namespace "$BRANCH"
