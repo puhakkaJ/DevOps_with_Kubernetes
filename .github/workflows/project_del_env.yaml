@@ -6,13 +6,16 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: dwk-cluster
   GKE_ZONE: europe-north1-b
-  BRANCH: ${GITHUB_REF#refs/heads/}
 jobs:
   build-publish-deploy:
     name: Deleting the branch environment
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get branch name (merge)
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -29,5 +32,5 @@ jobs:
 
       - name: Delete environment
         run: |-
-          echo "$BRANCH"
-          kubectl delete namespace "$BRANCH"
+          echo ${{ env.BRANCH_NAME }}
+          kubectl delete namespace ${{ env.BRANCH_NAME }}
