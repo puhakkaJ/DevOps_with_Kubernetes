@@ -1,0 +1,13 @@
+name: Delete branch environment
+on:
+  delete: 
+
+jobs:
+  build-publish-deploy:
+    name: Deleting the branch environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Delete environment
+        run: |-
+          kubectl delete namespace ${GITHUB_REF#refs/heads/}
