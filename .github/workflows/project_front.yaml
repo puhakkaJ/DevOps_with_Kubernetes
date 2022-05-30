@@ -1,4 +1,4 @@
-name: Release application backend
+name: Release application frontend
 on:
   push: 
     branches: 
@@ -19,6 +19,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
         with:
