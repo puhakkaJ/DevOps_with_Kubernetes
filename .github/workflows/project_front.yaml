@@ -2,7 +2,7 @@ name: Release application frontend
 on:
   push: 
     branches: 
-      - part3
+      - main
     paths:
       - 'part3/3.2/app2-toDo/frontend/**'
       - '.github/workflows/project_front.yml'
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
         with:
