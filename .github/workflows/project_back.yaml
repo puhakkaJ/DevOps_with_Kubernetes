@@ -49,5 +49,3 @@ jobs:
           kustomize build . | kubectl apply -f -
           kubectl rollout status deployment $IMAGE
           kubectl get services -o wide
-
-      
