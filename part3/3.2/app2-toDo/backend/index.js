@@ -5,7 +5,6 @@ const fs = require('fs')
 var cors = require('cors')
 const bodyParser = require('body-parser');
 
-
 const PORT = process.env.PORT || 5050
 
 const app = express()
@@ -15,9 +14,9 @@ app.use(cors())
 const directory = path.join('/', 'usr', 'src', 'app', 'files')
 const filePath = path.join(directory, 'image.jpg')
 
-
 const { Pool, Client } = require("pg");
-console.log(process.env.POSTGRES_PASSWORD)
+
+
 const pool = new Pool({
   user: "kubeuser",
   host: "postgres-svc",
