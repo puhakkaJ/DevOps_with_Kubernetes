@@ -4,7 +4,7 @@ on:
     branches: 
       - part3
     paths:
-      - 'part3/3.2/app2(toDo)/backend/**'
+      - 'part3/3.2/app2-toDo/backend/**'
       - '.github/workflows/project_back.yml'
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         run: |-
-          cd ./part3/3.2/app2(toDo)/backend/ && docker build \
+          cd ./part3/3.2/app2-toDo/backend/ && docker build \
           --tag "gcr.io/$PROJECT_ID/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" \
           .
       - name: Publish
@@ -44,7 +44,7 @@ jobs:
 
       - name: Deploy
         run: |-
-          cd ./part3/3.2/app2(toDo)/backend/
+          cd ./part3/3.2/app2-toDo/backend/
           kustomize edit set image gcr.io/PROJECT_ID/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
           kustomize build . | kubectl apply -f -
           kubectl rollout status deployment $IMAGE

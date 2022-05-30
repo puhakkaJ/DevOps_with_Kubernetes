@@ -14,8 +14,8 @@ app.use(cors())
 const directory = path.join('/', 'usr', 'src', 'app', 'files')
 const filePath = path.join(directory, 'image.jpg')
 
-
 const { Pool, Client } = require("pg");
+
 console.log(process.env.POSTGRES_PASSWORD)
 const pool = new Pool({
   user: "kubeuser",
