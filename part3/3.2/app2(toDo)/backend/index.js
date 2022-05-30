@@ -1,4 +1,3 @@
-const http = require('http')
 const express = require('express')
 const axios = require('axios')
 const path = require('path')
@@ -81,5 +80,6 @@ app.post('/todos', async (req, result) => {
     console.log("Your sent TODO is too long. Limit is 140 characters!")
   }
 })
+
 
 app.listen(PORT, () => {console.log(`Server started in port ${PORT}`) })
