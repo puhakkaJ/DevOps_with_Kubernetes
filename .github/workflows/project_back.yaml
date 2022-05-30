@@ -4,6 +4,7 @@ on:
     paths:
       - 'part3/3.2/app2-toDo/backend/**'
       - '.github/workflows/project_back.yml'
+      
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: dwk-cluster
