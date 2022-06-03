@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: devops-with-kubernetes
+  name: example-configmap
+data:
+    example.message: Hello
+
