@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-application-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-application-back
+  template:
+    metadata:
+      labels:
+        app: todo-application-back
+    spec:
+      volumes:
+        - name: shared-todo-application
+          persistentVolumeClaim:
+            claimName: image-claim
+      containers:
+        - name: todo-application-back
+          image: PROJECT-BACK/IMAGE
+          env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql-db-secret
+                key: DATABASE_PASSWORD
+          volumeMounts:
+          - name: shared-todo-application
+            mountPath: /usr/app/files
