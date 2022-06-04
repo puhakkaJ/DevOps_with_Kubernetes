@@ -16,7 +16,7 @@ const filePath = path.join(directory, 'image.jpg')
 
 const { Pool, Client } = require("pg");
 
-
+console.log("Starting logging")
 
 const pool = new Pool({
   user: "kubeuser",
@@ -68,6 +68,7 @@ app.get('/todos', async (req, result) => {
 })
 
 app.post('/todos', async (req, result) => {
+  console.log("Adding new todo:")
   if (req.body.new.length < 141) {
     pool.query(
       `INSERT INTO todo VALUES ('${req.body.new}')`,
