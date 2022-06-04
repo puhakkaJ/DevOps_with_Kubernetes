@@ -5,4 +5,4 @@ resources:
   - manifests/service.yaml
 images:
   - name: PROJECT-BACK/IMAGE
-    newName: muhakka/todo-application-back:latest
+    newName: muhakka/todo-application-back:e11a700350aede132b62d3b5fd63c05d6b976394
