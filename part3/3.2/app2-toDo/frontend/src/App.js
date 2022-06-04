@@ -17,7 +17,6 @@ const App = () => {
         console.error(err);
       });
     
-      
     setInput("")
     await axios
       .get('http://localhost:8082/todos')
