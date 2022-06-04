@@ -8,6 +8,15 @@ env:
   GKE_ZONE: europe-north1-b
   BRANCH: "${{ github.event.ref }}"
 jobs:
+
+  delete:
+    if: github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clean up
+        run: |
+          echo "GIT_BRANCH=${{ github.event.ref }}" >> $GITHUB_ENV
+
   build-publish-deploy:
     name: Deleting the branch environment
     runs-on: ubuntu-latest
@@ -25,5 +34,6 @@ jobs:
 
       - name: Delete environment
         run: |-
-          echo "$BRANCH"
-          kubectl delete namespace "$BRANCH"
+
+          echo "${GIT_BRANCH}"
+          kubectl delete namespace "${GIT_BRANCH}"
