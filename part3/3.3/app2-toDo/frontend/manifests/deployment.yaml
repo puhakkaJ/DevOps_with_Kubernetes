@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-application-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-application-front
+  template:
+    metadata:
+      labels:
+        app: todo-application-front
+    spec:
+      volumes:
+        - name: shared-todo-application
+          persistentVolumeClaim:
+            claimName: image-claim
+      containers:
+        - name: todo-application-front
+          image: PROJECT-FRONT/IMAGE
+          volumeMounts:
+            - name: shared-todo-application
+              mountPath: /usr/app/files
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 250m
+              memory: 250Mi

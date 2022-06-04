@@ -6,7 +6,9 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: dwk-cluster
   GKE_ZONE: europe-north1-b
+  BRANCH: "${{ github.event.ref }}"
 jobs:
+
   delete:
     if: github.event.ref_type == 'branch'
     runs-on: ubuntu-latest
@@ -32,5 +34,6 @@ jobs:
 
       - name: Delete environment
         run: |-
+
           echo "${GIT_BRANCH}"
           kubectl delete namespace "${GIT_BRANCH}"
