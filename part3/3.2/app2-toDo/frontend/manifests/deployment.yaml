@@ -12,16 +12,9 @@ spec:
       labels:
         app: todo-application-front
     spec:
-      volumes:
-        - name: shared-todo-application
-          persistentVolumeClaim:
-            claimName: image-claim
       containers:
         - name: todo-application-front
           image: gcr.io/PROJECT_ID/IMAGE
-          volumeMounts:
-            - name: shared-todo-application
-              mountPath: /usr/app/files
           resources:
             requests:
               cpu: 100m
