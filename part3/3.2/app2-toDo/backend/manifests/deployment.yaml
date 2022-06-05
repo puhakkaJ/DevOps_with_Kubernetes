@@ -30,8 +30,8 @@ spec:
             mountPath: /usr/app/files
           resources:
             requests:
-              cpu: 4m
-              memory: 9Mi
+              cpu: 20m
+              memory: 90Mi
             limits:
-              cpu: 4m
-              memory: 9Mi
+              cpu: 20m
+              memory: 90Mi
