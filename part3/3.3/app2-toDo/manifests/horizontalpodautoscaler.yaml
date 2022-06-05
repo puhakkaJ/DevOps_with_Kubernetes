@@ -8,8 +8,11 @@ spec:
     kind: Deployment
     name: todo-application-back
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 6
   targetCPUUtilizationPercentage: 50
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -21,5 +24,7 @@ spec:
     kind: Deployment
     name: todo-application-front
   minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 6
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300

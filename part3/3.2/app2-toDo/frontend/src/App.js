@@ -5,7 +5,6 @@ const url = 'http://localhost:8082/image'
 console.log("running")
 
 
-
 const App = () => {
   const [input, setInput] = useState("")
   const [todos, setTodos] = useState([])

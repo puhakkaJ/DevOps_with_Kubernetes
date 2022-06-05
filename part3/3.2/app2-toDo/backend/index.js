@@ -11,6 +11,7 @@ const app = express()
 app.use(bodyParser.json());
 app.use(cors())
 
+
 const directory = path.join('/', 'usr', 'src', 'app', 'files')
 const filePath = path.join(directory, 'image.jpg')
 
