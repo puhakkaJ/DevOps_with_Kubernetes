@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: |-
           cd ./part3/3.2/app2-toDo/backend/ && docker build \
-          --tag "gcr.io/$PROJECT_ID/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" \
+          --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
           .
       - name: Publish
         run: |-
