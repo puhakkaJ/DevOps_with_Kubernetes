@@ -18,6 +18,7 @@ const filePath = path.join(directory, 'image.jpg')
 const { Pool, Client } = require("pg");
 
 
+
 console.log("Sta rting logginnng todos 52:fiis in77")
 
 const pool = new Pool({
