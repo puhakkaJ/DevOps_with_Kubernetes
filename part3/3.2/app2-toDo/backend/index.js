@@ -16,7 +16,7 @@ const filePath = path.join(directory, 'image.jpg')
 
 const { Pool, Client } = require("pg");
 
-console.log("Starting logging todos2:fin  7")
+console.log("Starting logging todos2:finn  7")
 
 const pool = new Pool({
   user: "kubeuser",
