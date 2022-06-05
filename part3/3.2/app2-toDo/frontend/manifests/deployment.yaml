@@ -16,8 +16,6 @@ spec:
         - name: todo-application-front
           image: gcr.io/PROJECT_ID/IMAGE
           resources:
-            requests:
-              cpu: 100m
             limits:
               cpu: 250m
               memory: 250Mi
