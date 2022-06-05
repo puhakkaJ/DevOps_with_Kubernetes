@@ -29,8 +29,6 @@ spec:
           - name: shared-todo-application
             mountPath: /usr/app/files
           resources:
-            requests:
-              cpu: 50m
             limits:
-              cpu: 100m
-              memory: 1000Gi
+              cpu: 150m
+              memory: 500Gi
