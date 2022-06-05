@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: dwk-cluster
   GKE_ZONE: europe-north1-b
-  IMAGE: muhakka/todo-application-back
+  IMAGE: todo-application-back
 jobs:
   build-publish-deploy:
     name: Build, Publish and Deploy
