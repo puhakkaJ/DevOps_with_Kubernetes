@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import axios from 'axios'
 
 const url = 'http://localhost:8082/image'
-console.log("running")
+console.log("running77")
 
 const App = () => {
   const [input, setInput] = useState("")

@@ -14,4 +14,13 @@ spec:
     spec:
       containers:
         - name: todo-application-front
-          image: PROJECT-FRONT/IMAGE
+          image: gcr.io/PROJECT_ID/IMAGE
+          volumeMounts:
+            - name: shared-todo-application
+              mountPath: /usr/app/files
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 250m
+              memory: 250Mi

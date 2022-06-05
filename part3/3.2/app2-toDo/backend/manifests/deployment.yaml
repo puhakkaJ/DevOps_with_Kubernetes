@@ -21,3 +21,12 @@ spec:
               secretKeyRef:
                 name: postgresql-db-secret
                 key: DATABASE_PASSWORD
+          volumeMounts:
+          - name: shared-todo-application
+            mountPath: /usr/app/files
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 500m
+              memory: 1000Gi
