@@ -12,6 +12,10 @@ spec:
       labels:
         app: todo-application-back
     spec:
+      volumes:
+        - name: shared-todo-application
+          persistentVolumeClaim:
+            claimName: image-claim
       containers:
         - name: todo-application-back
           image: gcr.io/PROJECT_ID/IMAGE
