@@ -9,7 +9,6 @@ spec:
     name: todo-application-back
   minReplicas: 1
   maxReplicas: 6
-  targetCPUUtilizationPercentage: 50
   behavior:
     scaleDown:
       stabilizationWindowSeconds: 300
