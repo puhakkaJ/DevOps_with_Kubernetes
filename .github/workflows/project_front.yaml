@@ -32,12 +32,11 @@ jobs:
 
       - name: Build
         run: |-
-          cd ./part3/3.2/app2-toDo/backend/ && docker build \
-          --tag "gcr.io/$PROJECT_ID/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" \
-          .
+          docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:latest" part3/3.2/app2-toDo/frontend/
+  
       - name: Publish
         run: |-
-          docker push "gcr.io/$PROJECT_ID/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
+          docker push "gcr.io/$PROJECT_ID/$IMAGE:latest"
 
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v1
@@ -45,7 +44,7 @@ jobs:
       - name: Deploy
         run: |-
           cd ./part3/3.2/app2-toDo/frontend/
-          kustomize edit set image gcr.io/PROJECT_ID/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA
+          kustomize edit set image gcr.io/PROJECT_ID/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:latest
           kustomize build . | kubectl apply -f -
           kubectl rollout status deployment todo-application-front
           kubectl get services -o wide
