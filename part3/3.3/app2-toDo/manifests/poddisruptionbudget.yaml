@@ -1,0 +1,19 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: example-app-pdb-back
+spec:
+  maxUnavailable: 50%
+  selector:
+    matchLabels:
+      app: todo-application-back
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: example-app-pdb-front
+spec:
+  maxUnavailable: 50%
+  selector:
+    matchLabels:
+      app: todo-application-front
