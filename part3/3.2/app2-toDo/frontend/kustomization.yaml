@@ -4,5 +4,5 @@ resources:
   - manifests/deployment.yaml
   - manifests/service.yaml
 images:
-  - name: gcr.io/PROJECT_ID/IMAGE
+  - name: gcr.io/PROJECT_FRONT_ID/IMAGE
     newName: muhakka/todo-application-front:latest

@@ -6,7 +6,7 @@ on:
       - '.github/workflows/project_front.yml'
       
 env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  PROJECT_FRONT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: dwk-cluster
   GKE_ZONE: europe-north1-b
   IMAGE: todo-application-front
@@ -32,11 +32,11 @@ jobs:
 
       - name: Build
         run: |-
-          docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:latest" part3/3.2/app2-toDo/frontend/
+          docker build --tag "gcr.io/$PROJECT_FRONT_ID/$IMAGE:latest" part3/3.2/app2-toDo/frontend/
   
       - name: Publish
         run: |-
-          docker push "gcr.io/$PROJECT_ID/$IMAGE:latest"
+          docker push "gcr.io/$PROJECT_FRONT_ID/$IMAGE:latest"
 
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v1
@@ -44,7 +44,7 @@ jobs:
       - name: Deploy
         run: |-
           cd ./part3/3.2/app2-toDo/frontend/
-          kustomize edit set image gcr.io/PROJECT_ID/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:latest
+          kustomize edit set image gcr.io/PROJECT_FRONT_ID/IMAGE=gcr.io/$PROJECT_FRONT_ID/$IMAGE:latest
           kustomize build . | kubectl apply -f -
           kubectl rollout status deployment todo-application-front
           kubectl get services -o wide
