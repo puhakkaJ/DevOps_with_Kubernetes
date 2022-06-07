@@ -17,17 +17,11 @@ spec:
           image: gcr.io/PROJECT_ID/IMAGE
           ports:
           - containerPort: 80
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: 80
-            initialDelaySeconds: 10
-            periodSeconds: 5
           resources:
             requests:
               cpu: 20m
-              memory: 200Mi
+              memory: 170Mi
             limits:
               cpu: 20m
-              memory: 200Mi
+              memory: 170Mi
       
