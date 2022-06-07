@@ -16,11 +16,11 @@ spec:
         - name: todo-application-front
           image: gcr.io/PROJECT_ID/IMAGE
           ports:
-          - containerPort: 2345
+          - containerPort: 80
           readinessProbe:
             httpGet:
               path: /healthz
-              port: 2345
+              port: 80
             initialDelaySeconds: 10
             periodSeconds: 5
           resources:
