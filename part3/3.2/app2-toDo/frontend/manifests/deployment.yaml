@@ -15,6 +15,14 @@ spec:
       containers:
         - name: todo-application-front
           image: gcr.io/PROJECT_ID/IMAGE
+          ports:
+          - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
           resources:
             requests:
               cpu: 20m
@@ -22,10 +30,4 @@ spec:
             limits:
               cpu: 20m
               memory: 200Mi
-      lifecycle:
-        preStop:
-            exec:
-              command:
-              - /bin/sh
-              - -c
-              - sleep 60
+      
