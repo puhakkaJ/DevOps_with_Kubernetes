@@ -8,7 +8,7 @@ RUN npm ci
 
 COPY . .
 
-ENV PORT=8080
+ENV PORT=80
 ENV WDS_SOCKET_PORT=0
 
 CMD ["npm", "start"]
