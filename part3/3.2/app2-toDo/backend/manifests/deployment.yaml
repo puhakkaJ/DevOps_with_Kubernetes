@@ -32,7 +32,6 @@ spec:
             mountPath: /usr/src/app/files
           resources:
             limits:
-              cpu: 29m
-              memory: 100Mi
+              cpu: 300m
+              memory: 1000Mi
 
-              

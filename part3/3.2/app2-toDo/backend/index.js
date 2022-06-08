@@ -50,6 +50,7 @@ fetchImage();
 
 app.get('/image', async (req, res) => {
   if (!(fileAlreadyExists)) {await fetchImage()}
+  console.log("image")
   res.sendFile(filePath)
 })
 
