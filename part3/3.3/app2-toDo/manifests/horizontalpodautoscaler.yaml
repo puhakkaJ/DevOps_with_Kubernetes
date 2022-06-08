@@ -1,4 +1,4 @@
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: cpushredder-hpa-back
@@ -13,7 +13,7 @@ spec:
     scaleDown:
       stabilizationWindowSeconds: 300
 ---
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: cpushredder-hpa-front

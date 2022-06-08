@@ -15,13 +15,11 @@ spec:
       containers:
         - name: todo-application-front
           image: gcr.io/PROJECT_ID/IMAGE
-          ports:
-          - containerPort: 2345
           resources:
             requests:
-              cpu: 0.4m
+              cpu: 0.5m
               memory: 110Mi
             limits:
-              cpu: 0.4m
+              cpu: 0.5m
               memory: 110Mi
       
