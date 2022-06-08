@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: todo-application-back
-          image: PROJECT-BACK/IMAGE
+          image: gcr.io/PROJECT_ID/IMAGE
           env:
           - name: POSTGRES_PASSWORD
             valueFrom:
