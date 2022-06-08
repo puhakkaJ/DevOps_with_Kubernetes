@@ -7,7 +7,7 @@ spec:
   selector:
     app: todo-application-back
   ports:
-    - port: 2345
+    - port: 2346
       protocol: TCP
       nodePort: 30080
       targetPort: 5050
