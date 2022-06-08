@@ -34,7 +34,7 @@ const App = () => {
       .then(response => {
         console.log('promise fulfilled')
         setTodos(response.data)
-      })
+      }) 
   }, [])
 
 

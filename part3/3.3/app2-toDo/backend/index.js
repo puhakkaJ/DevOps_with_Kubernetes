@@ -83,5 +83,9 @@ app.post('/todos', async (req, result) => {
   }
 })
 
+app.get('/', async (req, res) => {
+  res.sendStatus(200)
+})
+
 
 app.listen(PORT, () => {console.log(`Server started in port ${PORT}`) })
