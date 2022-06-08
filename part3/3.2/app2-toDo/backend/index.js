@@ -48,9 +48,14 @@ const fetchImage = async () => {
 
 fetchImage();
 
+
+app.get('/', async (req, res) => {
+  res.sendStatus(200)
+})
+
 app.get('/image', async (req, res) => {
   if (!(fileAlreadyExists)) {await fetchImage()}
-  console.log("image")
+  console.log("Added new todo: TODO3")
   res.sendFile(filePath)
 })
 
@@ -72,12 +77,11 @@ app.get('/todos', async (req, result) => {
 })
 
 app.post('/todos', async (req, result) => {
-  console.log("Adding new todo: ")
   if (req.body.new.length < 141) {
     pool.query(
       `INSERT INTO todo VALUES ('${req.body.new}')`,
       (err, res) => {
-        console.log(req.body.new);
+        console.log(`Adding new todo: ${req.body.new}`)
         
         result.sendStatus(200);
       }
@@ -87,9 +91,6 @@ app.post('/todos', async (req, result) => {
   }
 })
 
-app.get('/', async (req, res) => {
-  res.sendStatus(200)
-})
 
 
 app.listen(PORT, () => {console.log(`Server started in port ${PORT}`) })
