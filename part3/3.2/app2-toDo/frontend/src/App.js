@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 
 
 const url = 'http://localhost:8082/image'
-console.log("running")
+console.log("runningoo")
 
 
 const App = () => {
