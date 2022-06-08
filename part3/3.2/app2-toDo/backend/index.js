@@ -27,7 +27,7 @@ const pool = new Pool({
   password: process.env.POSTGRES_PASSWORD,
   port: "5432"
 });
-
+console.log(process.env.POSTGRES_PASSWORD)
 
 const fileAlreadyExists = async () => new Promise(res => {
   fs.stat(filePath, (err, stats) => {
