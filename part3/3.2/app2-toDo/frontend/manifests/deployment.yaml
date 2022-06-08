@@ -19,6 +19,12 @@ spec:
           image: gcr.io/PROJECT_ID/IMAGE_FRONT
           resources:
             limits:
-              cpu: 30m
-              memory: 400Mi
+              cpu: 28m
+              memory: 100Mi
+          readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
       

@@ -12,11 +12,11 @@ spec:
           service:
             name: todo-application-front-svc
             port: 
-              number: 8080
+              number: 80
       - path: /image
         pathType: Prefix
         backend:
           service:
             name: todo-application-back-svc
             port: 
-              number: 5050
+              number: 80
