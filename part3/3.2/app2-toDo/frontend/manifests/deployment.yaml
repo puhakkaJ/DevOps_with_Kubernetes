@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: todo-application-front
-          image: gcr.io/PROJECT_ID/IMAGE
+          image: gcr.io/PROJECT_ID/IMAGE_FRONT
           resources:
             requests:
-              cpu: 0.5m
+              cpu: 0.1m
               memory: 150Mi
             limits:
-              cpu: 0.5m
+              cpu: 0.1m
               memory: 150Mi
       
