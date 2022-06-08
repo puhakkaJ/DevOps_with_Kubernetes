@@ -54,6 +54,7 @@ app.get('/image', async (req, res) => {
 })
 
 app.get('/todos', async (req, result) => {
+  console.log("todos")
   pool.query(
     "SELECT text FROM todo",
     (err, res) => {

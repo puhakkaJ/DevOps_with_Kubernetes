@@ -1,10 +1,8 @@
 import React, { useState, useEffect} from 'react'
 import axios from 'axios'
-import { Route, Routes } from 'react-router-dom'
-
 
 const url = 'http://localhost:8082/image'
-console.log("runningoo")
+console.log("runningn")
 
 
 const App = () => {
@@ -46,9 +44,8 @@ const App = () => {
 
 
   return (
-    <Routes>
-      <Route path="/healthz" element={<div>Healthy</div>} />
-      <Route path="/" element={<div>
+    
+    <div>
       <img alt="daily" src={url} style={{ width: 700, height: 700}} />
       <div>
         <form method="POST" onSubmit={handleSubmit}>
@@ -63,10 +60,7 @@ const App = () => {
         {todos.map(todo => 
           <li key={todo}>{todo}</li> )}
       </ul>
-    </div>} />
-    
-    </Routes>
-
+    </div>
   )
 }
 
