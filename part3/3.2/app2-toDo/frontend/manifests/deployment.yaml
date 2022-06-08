@@ -17,9 +17,9 @@ spec:
           image: gcr.io/PROJECT_ID/IMAGE_FRONT
           resources:
             requests:
-              cpu: 10m
-              memory: 400Mi
+              cpu: 0.4m
+              memory: 300Mi
             limits:
-              cpu: 10m
-              memory: 400Mi
+              cpu: 0.4m
+              memory: 300Mi
       
