@@ -29,7 +29,7 @@ spec:
                 key: DATABASE_PASSWORD
           volumeMounts:
           - name: shared-todo-application
-            mountPath: /usr/src/app/files
+            mountPath: /usr/app/files
           resources:
             limits:
               cpu: 400m
