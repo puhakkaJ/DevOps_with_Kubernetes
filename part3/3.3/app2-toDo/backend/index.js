@@ -68,12 +68,11 @@ app.get('/todos', async (req, result) => {
 })
 
 app.post('/todos', async (req, result) => {
-  console.log("Adding new todo:")
   if (req.body.new.length < 141) {
     pool.query(
       `INSERT INTO todo VALUES ('${req.body.new}')`,
       (err, res) => {
-        console.log(req.body.new);
+        console.log(`Adding new todo: ${req.body.new}`);
         
         result.sendStatus(200);
       }
