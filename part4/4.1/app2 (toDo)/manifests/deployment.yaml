@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: devops-with-kubernetes-project
+  name: todo-application-dep
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: todo-application
+  template:
+    metadata:
+      labels:
+        app: todo-application
+    spec:
+      containers:
+        - name: todo-application-back
+          image: muhakka/todo-application-back:latest
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-db-secret
+                  key: DATABASE_PASSWORD
+          readinessProbe:
+            initialDelaySeconds: 30 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /healthz
+              port: 5050
+          livenessProbe:
+            initialDelaySeconds: 30 # Initial delay until the liveness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /healthz
+              port: 5050
+        - name: todo-application-front
+          image: muhakka/todo-application-front:latest
+          readinessProbe:
+            initialDelaySeconds: 30 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /healthz
+              port: 8080
+          livenessProbe:
+            initialDelaySeconds: 30 # Initial delay until the liveness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /healthz
+              port: 8080
