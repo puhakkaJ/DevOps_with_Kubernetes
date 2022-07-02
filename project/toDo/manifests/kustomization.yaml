@@ -16,12 +16,12 @@ images:
 - name: PROJECT/BACKEND
   newName: muhakka/dwk-4-gitops-project-back
   newTag: latest
-- name: PROJECT/FRONTEND
-  newName: muhakka/dwk-4-gitops-project-front
-  newTag: latest
 - name: PROJECT/BROADCASTER
   newName: muhakka/dwk-4-gitops-project-broadcaster
   newTag: latest
 - name: PROJECT/DAILY-CRONJOB
   newName: muhakka/dwk-4-gitops-project-cronjob
+  newTag: latest
+- name: PROJECT/FRONTEND
+  newName: muhakka/dwk-4-gitops-project-front
   newTag: latest
