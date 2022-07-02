@@ -57,7 +57,7 @@ jobs:
     # Commit and push
     - uses: EndBug/add-and-commit@v7
       with:
-        add: 'project/toDo/kustomization.yaml'
+        add: 'project/toDo/manifests/kustomization.yaml'
         message: New version release for gitops-project ${{ github.sha }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
