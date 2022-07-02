@@ -49,7 +49,7 @@ jobs:
 
     # Update yamls
     - name: Update yamls
-      working-directory: project/toDo
+      working-directory: project/toDo/manifests
       run: |-
         kustomize edit set image PROJECT/FRONTEND=muhakka/dwk-4-gitops-project-front:latest
         kustomize edit set image PROJECT/BACKEND=muhakka/dwk-4-gitops-project-back:latest
