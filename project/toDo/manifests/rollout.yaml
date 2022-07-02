@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: todo-application-back
-          image: muhakka/todo-application-back:latest
+          image: PROJECT/BACKEND
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
@@ -43,7 +43,7 @@ spec:
               path: /healthz
               port: 5050
         - name: todo-application-front
-          image: muhakka/todo-application-front:latest
+          image: PROJECT/FRONTEND
           readinessProbe:
             initialDelaySeconds: 30 # Initial delay until the readiness is tested
             periodSeconds: 5 # How often to test
