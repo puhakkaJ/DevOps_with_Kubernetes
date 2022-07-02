@@ -10,9 +10,9 @@ const NATS = require('nats')
 
 const PORT = process.env.PORT || 5050
 
-// const nc = NATS.connect({
-//  url: process.env.NATS_URL || 'nats://nats:4222'
-//})
+const nc = NATS.connect({
+  url: process.env.NATS_URL || 'nats://nats:4222'
+})
 
 const app = express()
 app.use(bodyParser.json());
@@ -78,7 +78,7 @@ app.post('/todos', async (req, result) => {
       `INSERT INTO todo (text, done) VALUES ('${req.body.new}', false)`,
       (err, res) => {
         console.log(req.body.new);
-        //nc.publish('todo_status', JSON.stringify({message: `New TODO '${req.body.new}' added!`}))
+        nc.publish('todo_status', JSON.stringify({message: `New TODO '${req.body.new}' added!`}))
         result.sendStatus(200);
       }
     );
