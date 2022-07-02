@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: broadcaster
-          image: muhakka/broadcaster
+          image: PROJECT/BROADCASTER
           env:
             - name: NATS_URL
               value: nats://my-nats:4222

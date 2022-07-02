@@ -11,5 +11,5 @@ spec:
         spec:
           containers:
           - name: daily-todo
-            image: muhakka/daily-todo:latest
+            image: PROJECT/DAILY-CRONJOB
           restartPolicy: OnFailure
