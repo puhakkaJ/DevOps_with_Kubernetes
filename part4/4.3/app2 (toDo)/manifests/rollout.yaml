@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  namespace: devops-with-kubernetes-project
+  name: todo-application-dep
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: todo-application
+  strategy:
+    canary:
+      steps:
+      - setWeight: 50
+      - analysis:
+          templates:
+          - templateName: cpu-usage-watch
+  template:
+    metadata:
+      labels:
+        namespace: devops-with-kubernetes-project
+        app: todo-application
+    spec:
+      containers:
+        - name: todo-application-back
+          image: PROJECT/BACKEND
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-db-secret
+                  key: DATABASE_PASSWORD
+          readinessProbe:
+            initialDelaySeconds: 30 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /healthz
+              port: 5050
+          livenessProbe:
+            initialDelaySeconds: 30 # Initial delay until the liveness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /healthz
+              port: 5050
+        - name: todo-application-front
+          image: PROJECT/FRONTEND
+          readinessProbe:
+            initialDelaySeconds: 30 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /healthz
+              port: 8080
+          livenessProbe:
+            initialDelaySeconds: 30 # Initial delay until the liveness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+              path: /healthz
+              port: 8080
