@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- manifests/frontend/service.yaml
+- manifests/backend/rollout.yaml
+- manifests/backend/service.yaml
+- manifests/backend/horizontalpodautoscaler.yaml
+- manifests/ingress.yaml
+- manifests/analysistemplate.yaml
+images:
+- name: PROJECT/BACKEND
+  newName: muhakka/dwk-4-gitops-project-back
+  newTag: latest
+- name: PROJECT/FRONTEND
+  newName: muhakka/dwk-4-gitops-project-front
+  newTag: latest
