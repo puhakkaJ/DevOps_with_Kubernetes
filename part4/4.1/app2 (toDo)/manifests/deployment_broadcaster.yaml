@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dwk-broadcaster
+  namespace: devops-with-kubernetes-project
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: todo-application-broadcaster
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: todo-application-broadcaster
+    spec:
+      containers:
+      - env:
+        - name: NATS_URL
+          value: nats://my-nats:4222
+        - name: API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: DISCORD_BOT_TOKEN
+              name: secrets
+        image: PROJECT/BROADCASTER
+        name: todo-application-broadcaster
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: monitoring-nats
+  namespace: prometheus
+  # We need a label so that Prometheus knows to listen to this
+spec:
+  selector:
+    matchLabels:
+    # We also need a label which we want to listen
+  endpoints:
+    - interval: 10s
+      path: /metrics
+      port: # We need to define the port which should be listened
+  namespaceSelector:
+    matchNames:
+      - default
