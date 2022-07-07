@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  namespace: devops-with-kubernetes
+  name: log-output-dep
+spec:
+  template:
+    metadata:
+      name: log-output-dep-serverless
+    spec:
+      containers:
+        - name: log-output
+          image: muhakka/logoutput-vol-http:latest
+          env:
+            # Define the environment variable
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                  name: example-configmap
+                  # Specify the key associated with the value
+                  key: example.message
