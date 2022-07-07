@@ -1,0 +1,7 @@
+apiVersion: stable.dwk/v1
+kind: Dummysite
+metadata:
+  name: examplesite
+spec:
+  url: https://example.com/
+  image: muhakka/dummysite:latest
