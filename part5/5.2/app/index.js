@@ -1,11 +1,10 @@
-const fetch = require('node-fetch');
 const express = require('express')
+const fetch = require('node-fetch');
+
 var app = express()
+
 const url = process.env.WEBSITE_URL
-
-const port = 3000;
-
-console.log("This resource will get HTML data from " + url)
+const PORT = 3000;
 
 app.get('/', function(req, res) {
   fetch(url)
@@ -13,6 +12,6 @@ app.get('/', function(req, res) {
     .then(body => res.send(body));
 })
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server started in port ${port}`)
 })
