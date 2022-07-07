@@ -28,7 +28,7 @@ const getRandomString = () => {
 }
 
 const getPongs = async () => {
-  const res = await axios.get("http://pingpong-svc:2345/pingpong")
+  const res = await axios.get("http://pingpong-dep.devops-with-kubernetes.svc.cluster.local:2345/pingpong")
   return res.data
 }
 
@@ -44,7 +44,7 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/healthz', async (req, res) => {
-  const response = await axios.get("http://pingpong-svc:2345/healthz")
+  const response = await axios.get("http://pingpong-dep.devops-with-kubernetes.svc.cluster.local:2345/healthz")
   if (response.status === 200) {
     res.sendStatus(200)
   } else {
