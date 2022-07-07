@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   namespace: devops-with-kubernetes-project
   name: todo-application-dep
@@ -8,11 +8,17 @@ spec:
   selector:
     matchLabels:
       app: todo-application
+  strategy:
+    canary:
+      steps:
+      - setWeight: 50
+      - analysis:
+          templates:
+          - templateName: cpu-usage-watch
   template:
     metadata:
-      annotations:
-        linkerd.io/inject: enabled
       labels:
+        namespace: devops-with-kubernetes-project
         app: todo-application
     spec:
       containers:
@@ -24,8 +30,6 @@ spec:
                 secretKeyRef:
                   name: postgresql-db-secret
                   key: DATABASE_PASSWORD
-            - name: NATS_URL
-              value: nats://my-nats:4222
           readinessProbe:
             initialDelaySeconds: 30 # Initial delay until the readiness is tested
             periodSeconds: 5 # How often to test
